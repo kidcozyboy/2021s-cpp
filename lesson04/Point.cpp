@@ -3,19 +3,16 @@
 
 using namespace std;
 
-Point::Point() {
-    x = 0;
-    y = 0;
+Point::Point():
+    x(0), y(0){
 }
 
-Point::Point(const Point &point) {
-    x = point.x;
-    y = point.y;
+Point::Point(const Point &point):
+    x(point.x), y(point.y){
 }
 
-Point::Point(double x, double y) {
-    this->x = x;
-    this->y = y;
+Point::Point(double x, double y):
+    x(x), y(y){
 }
 
 Point& Point::operator=(const Point &point) {
