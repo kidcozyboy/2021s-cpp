@@ -127,6 +127,6 @@ Complex operator*(double x, const Complex &y) {
 }
 
 ostream& operator<<(ostream& ostream, const Complex& complex) {
-    if (complex.getImag() < 0) return ostream << complex.real << complex.imag << "i";
+    if (complex.imag < 0) return ostream << complex.real << complex.imag << "i";
     else return ostream << complex.real << "+" << complex.imag << "i";
 }
