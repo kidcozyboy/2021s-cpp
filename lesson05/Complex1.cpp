@@ -85,7 +85,7 @@ Complex1 &Complex1::operator*=(const Complex1 &arg) {
 
 Complex1 &Complex1::operator/=(const Complex1 &arg) {
     double real2 = ((real * arg.real) + (imag * arg.imag)) / (pow(arg.real, 2) + pow(arg.imag, 2));
-    double imag2 = ((imag * arg.real) - (real2 * arg.imag)) / (pow(arg.real, 2) + pow(arg.imag, 2));
+    double imag2 = ((imag * arg.real) - (real * arg.imag)) / (pow(arg.real, 2) + pow(arg.imag, 2));
 
     real = real2;
     imag = imag2;
