@@ -20,43 +20,25 @@ Complex2& Complex2::operator=(const Complex2 &arg) {
 Complex2 Complex2::operator+(const Complex2 &arg) const {
     Complex2 temp(*this);
 
-    temp.real += arg.real;
-    temp.imag += arg.imag;
-
-    return temp;
+    return temp += arg;
 }
 
 Complex2 Complex2::operator-(const Complex2 &arg) const {
     Complex2 temp(*this);
 
-    temp.real -= arg.real;
-    temp.imag -= arg.imag;
-
-    return temp;
+    return temp -= arg;
 }
 
 Complex2 Complex2::operator*(const Complex2 &arg) const {
     Complex2 temp(*this);
 
-    double real2 = (temp.real * arg.real) - (arg.imag * temp.imag);
-    double imag2 = (temp.imag * arg.real) + (temp.real * arg.imag);
-
-    temp.real = real2;
-    temp.imag = imag2;
-
-    return temp;
+    return temp *= arg;
 }
 
 Complex2 Complex2::operator/(const Complex2 &arg) const {
     Complex2 temp(*this);
 
-    double real2 = ((temp.real * arg.real) + (temp.imag * arg.imag)) / (pow(arg.real, 2) + pow(arg.imag, 2));
-    double imag2 = ((temp.imag * arg.real) - (temp.real * arg.imag)) / (pow(arg.real, 2) + pow(arg.imag, 2));
-
-    temp.real = real2;
-    temp.imag = imag2;
-
-    return temp;
+    return temp /= arg;
 }
 
 Complex2 &Complex2::operator+=(const Complex2 &arg) {
