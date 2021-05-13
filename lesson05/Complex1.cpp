@@ -17,25 +17,25 @@ Complex1& Complex1::operator=(const Complex1 &arg) {
     return *this;
 }
 
-Complex1 Complex1::operator+(const Complex1 &arg) const {
+Complex1 Complex1::operator+(const Complex1 &arg) {
     Complex1 temp(*this);
 
     return temp += arg;
 }
 
-Complex1 Complex1::operator-(const Complex1 &arg) const {
+Complex1 Complex1::operator-(const Complex1 &arg) {
     Complex1 temp(*this);
 
     return temp -= arg;
 }
 
-Complex1 Complex1::operator*(const Complex1 &arg) const {
+Complex1 Complex1::operator*(const Complex1 &arg) {
     Complex1 temp(*this);
 
     return temp *= arg;
 }
 
-Complex1 Complex1::operator/(const Complex1 &arg) const {
+Complex1 Complex1::operator/(const Complex1 &arg) {
     Complex1 temp(*this);
 
     return temp /= arg;
