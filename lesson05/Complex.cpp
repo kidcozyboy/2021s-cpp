@@ -97,15 +97,14 @@ double Complex::getModulus() const {
 
 Complex operator+(double x, const Complex &y) {
     Complex temp(y);
-    temp.real += x;
-    return temp;
+
+    return temp += x;
 }
 
 Complex operator*(double x, const Complex &y) {
     Complex temp(y);
-    temp.real *= x;
-    temp.imag *= x;
-    return temp;
+
+    return temp *= x;
 }
 
 ostream& operator<<(ostream& ostream, const Complex& complex) {
