@@ -41,7 +41,7 @@ public:
         canvas::drawCircle(position.getX(), position.getY(), radius);
     }
 
-    std::string str() const {
+    virtual std::string str() const {
         std::stringstream ss;
         ss << "Circle[center=" << position << ", radius=" << radius << "]";
         return ss.str();

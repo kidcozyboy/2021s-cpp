@@ -20,7 +20,7 @@ public:
 
     Point getPos() const { return position; }
 
-    void draw() {
+    virtual void draw() {
         canvas::drawRectangle(position.getX(), position.getY(), length, height);
         std::cout << position.getX() << ", " << position.getY() << std::endl;
     }
@@ -69,14 +69,14 @@ public:
     void setFront(Wheel f) { front = f; }
     void setRear(Wheel r) { rear = r; }
 
-    void setXY(int x, int y) {
+    virtual void setXY(int x, int y) {
         position = Point(x, y);
         body = Body(Point(x - (body.getLength() / 2), y - (body.getHeight() / 2)), body.getLength(), body.getHeight());
         front = Wheel(Point(x - (body.getLength() / 2) + front.getRadius(), y + (body.getHeight() / 2)), front.getRadius());
         rear = Wheel(Point(x + (body.getLength() / 2) - front.getRadius(), y + (body.getHeight() / 2)), front.getRadius());
     }
 
-    void draw() {
+    virtual void draw() {
         std::cout << position.getX() << ", " << position.getY() << std::endl;
         body.draw();
         front.fill();
