@@ -1,0 +1,93 @@
+#
+#	makefile
+#
+
+CXX		=	g++
+CXXFLAGS	=	$(CXXINCLUDE) $(DEBUG)
+CXXINCLUDE	=
+LINK.o		=	$(LINK.cc)
+LDLIBS		=	-lgdi32
+LOADLIBS	=	
+DEBUG		=	
+DEBUG		=	-Wall
+#DEBUG		=	-Wall -g
+ZIPCMD		=	zip
+
+TARGET		=	$(TARGET_EX) $(TARGET_QZ)
+TARGET_EX	=	ex7_1a ex7_1b ex7_1c ex7_2 ex7_3 ex7_4a ex7_4b
+TARGET_QZ	=	# q6_1 q6_2 q6_3 q6_4
+
+OBJS		=	$(OBJS_EX) $(OBJS_QZ)
+OBJS_EX		=	ex7_1a.o ex7_1b.o ex7_1c.o ex7_2.o ex7_3.o ex7_4a.o ex7_4b.o
+OBJS_QZ		=	# q6_1.o q6_2.o q6_3.o q6_4.o 
+
+WEXECS		=	$(WEXECS_EX) $(WEXECS_QZ)
+WEXECS_EX	=	ex6_1.exe ex6_2.exe ex6_3.exe ex6_4.exe
+WEXECS_QZ	=	q6_1.exe q6_2.exe q6_3.exe q6_4.exe
+
+WORKDIR		=	lesson07
+
+ARCHIVE		=	$(WORKDIR).zip
+
+ZIP_SRCS	=	$(WORKDIR)/q7_1.cpp $(WORKDIR)/q7_2.cpp \
+			$(WORKDIR)/q7_3.cpp $(WORKDIR)/q7_4.cpp
+
+ZIP_HDRS	=	$(WORKDIR)/Color.h $(WORKDIR)/Point.h \
+			$(WORKDIR)/Car1.h $(WORKDIR)/Car2.h \
+			$(WORKDIR)/Car.h $(WORKDIR)/ColoredCar.h \
+			$(WORKDIR)/Circle.h $(WORKDIR)/ColoredCircle.h
+
+ZIP_MISC	=	$(WORKDIR)/makefile
+
+default:
+	@echo make XXX となるようにターゲットを指定してください
+
+all:		$(TARGET)
+
+quiz:		$(TARGET_QZ)
+
+clean:	
+		-$(RM) $(WEXECS) $(OBJS) $(TARGET) *.exe.stackdump
+
+zip:
+	-(cd ..; $(ZIPCMD) $(ARCHIVE) $(ZIP_SRCS) $(ZIP_HDRS) $(ZIP_MISC) )
+
+ex7_1a:		ex7_1a.o ../canvas/canvas.o
+ex7_1b:		ex7_1b.o ../canvas/canvas.o
+ex7_1c:		ex7_1c.o ../canvas/canvas.o
+ex7_2:		ex7_2.o
+		$(LINK.o) $^ -o $@
+ex7_3:		ex7_3.o
+		$(LINK.o) $^ -o $@
+ex7_4a:		ex7_4a.o
+		$(LINK.o) $^ -o $@
+ex7_4b:		ex7_4b.o
+		$(LINK.o) $^ -o $@
+ex7_5a:		ex7_5a.o ../canvas/canvas.o
+ex7_5b:		ex7_5b.o ../canvas/canvas.o
+q7_1:		q6_1.o ../canvas/canvas.o
+q7_2:		q6_2.o ../canvas/canvas.o
+q7_3:		q6_3.o ../canvas/canvas.o
+q7_4:		q6_4.o ../canvas/canvas.o
+
+ex7_1a.o:	ex7_1a.cpp ColoredRect1.h Rect1.h Color.h Point.h
+ex7_1b.o:	ex7_1b.cpp ColoredRect2.h Rect2.h Color.h Point.h
+ex7_1c.o:	ex7_1c.cpp ColoredRect3.h Rect3.h Color.h Point.h
+ex7_2.o:	ex7_2.cpp 
+ex7_3.o:	ex7_3.cpp
+ex7_4a.o:	ex7_4a.cpp
+ex7_4b.o:	ex7_4b.cpp
+ex7_5a.o:	ex7_5a.cpp ColoredRect.h Rect.h Color.h Point.h
+ex7_5b.o:	ex7_5b.cpp ColoredRect.h Rect.h Color.h Point.h
+q7_1.o:		q7_1.cpp Point.h Car1.h
+q7_2.o:		q7_2.cpp Point.h Car2.h
+q7_3.o:		q7_3.cpp Point.h ColoredCar.h Car.h
+q7_4.o:		q7_4.cpp ColoredCircle.h Circle.h Color.h Point.h
+
+##
+##	extra rules for cygwin
+##
+.SUFFIXES:	.cpp .exe
+
+.cpp.exe:
+		$(LINK.cc) $^ $(LOADLIBES) $(LDLIBS) -o $@
