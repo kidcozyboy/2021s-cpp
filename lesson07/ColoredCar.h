@@ -35,7 +35,7 @@ public:
 
     void setXY(int x, int y) override {
         Car::setXY(x, y);
-        coloredBody = ColoredBody(Point(x - (getBody().getLength() / 2), y - (getBody().getHeight() / 2)), getBody().getLength(), getBody().getHeight(), Color(coloredBody.getColor().getRed(), coloredBody.getColor().getGreen(), coloredBody.getColor().getBlue()));
+        coloredBody.setXY(x, y);
     }
 
     void draw() override {
