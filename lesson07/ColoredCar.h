@@ -15,8 +15,6 @@ private:
 public:
     ColoredBody(Point p, int l, int h, Color c): Body(p, l, h), color(c) {}
 
-    Color getColor() const { return color; }
-
     void draw() override {
         canvas::setColor(color.getRed(), color.getGreen(), color.getBlue());
         canvas::drawRectangle(getPos().getX(), getPos().getY(), getLength(), getHeight());
