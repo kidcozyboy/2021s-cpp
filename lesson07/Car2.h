@@ -18,9 +18,14 @@ public:
     int getLength() const { return length; }
     int getHeight() const { return height; }
 
+    void setXY(int x, int y) {
+        position.setX(x - (length / 2));
+        position.setY(y - (height / 2));
+    }
+
     void draw() {
         canvas::drawRectangle(position.getX(), position.getY(), length, height);
-        std::cout << position.getX() << ", " << position.getY() << std::endl;
+        std::cout << "body: " << position.getX() << ", " << position.getY() << std::endl;
     }
 };
 
@@ -34,9 +39,19 @@ public:
 
     int getRadius() const { return radius; }
 
+    void setXY(int x, int y, Body body, bool isFront) {
+        if (isFront) {
+            position.setX(x - (body.getLength() / 2) + radius);
+            position.setY(y + (body.getHeight() / 2));
+        } else {
+            position.setX(x + (body.getLength() / 2) - radius);
+            position.setY(y + (body.getHeight() / 2));
+        }
+    }
+
     void draw() {
         canvas::drawCircle(position.getX(), position.getY(), radius);
-        std::cout << position.getX() << ", " << position.getY() << std::endl;
+        std::cout << "wheel: " << position.getX() << ", " << position.getY() << std::endl;
     }
 
     void fill() {
@@ -58,15 +73,16 @@ public:
         front(Wheel(Point(x - (l / 2) + r, y + (h / 2)), r)),
         rear(Wheel(Point(x + (l / 2) - r, y + (h / 2)), r)) {}
 
-    void setXY(int x, int y) {
-        position = Point(x, y);
-        body = Body(Point(x - (body.getLength() / 2), y - (body.getHeight() / 2)), body.getLength(), body.getHeight());
-        front = Wheel(Point(x - (body.getLength() / 2) + front.getRadius(), y + (body.getHeight() / 2)), front.getRadius());
-        rear = Wheel(Point(x + (body.getLength() / 2) - front.getRadius(), y + (body.getHeight() / 2)), front.getRadius());
+    virtual void setXY(int x, int y) {
+        position.setX(x);
+        position.setY(y);
+        body.setXY(x, y);
+        front.setXY(x, y, body, true);
+        rear.setXY(x, y, body, false);
     }
 
-    void draw() {
-        std::cout << position.getX() << ", " << position.getY() << std::endl;
+    virtual void draw() {
+        std::cout << "pos: " << position.getX() << ", " << position.getY() << std::endl;
         body.draw();
         front.fill();
         rear.fill();

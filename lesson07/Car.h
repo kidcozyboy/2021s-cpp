@@ -20,6 +20,11 @@ public:
 
     Point getPos() const { return position; }
 
+    void setXY(int x, int y) {
+        position.setX(x - (length / 2));
+        position.setY(y - (height / 2));
+    }
+
     virtual void draw() {
         canvas::drawRectangle(position.getX(), position.getY(), length, height);
         std::cout << position.getX() << ", " << position.getY() << std::endl;
@@ -35,6 +40,16 @@ public:
     Wheel(Point p, int r): position(Point(p)), radius(r) {}
 
     int getRadius() const { return radius; }
+
+    void setXY(int x, int y, Body body, bool isFront) {
+        if (isFront) {
+            position.setX(x - (body.getLength() / 2) + radius);
+            position.setY(y + (body.getHeight() / 2));
+        } else {
+            position.setX(x + (body.getLength() / 2) - radius);
+            position.setY(y + (body.getHeight() / 2));
+        }
+    }
 
     void draw() {
         canvas::drawCircle(position.getX(), position.getY(), radius);
@@ -64,16 +79,12 @@ public:
     Wheel getFront() const { return front; }
     Wheel getRear() const { return rear; }
 
-    void setPos(Point pos) { position = pos; }
-    void setBody(Body b) { body = b; }
-    void setFront(Wheel f) { front = f; }
-    void setRear(Wheel r) { rear = r; }
-
     virtual void setXY(int x, int y) {
-        position = Point(x, y);
-        body = Body(Point(x - (body.getLength() / 2), y - (body.getHeight() / 2)), body.getLength(), body.getHeight());
-        front = Wheel(Point(x - (body.getLength() / 2) + front.getRadius(), y + (body.getHeight() / 2)), front.getRadius());
-        rear = Wheel(Point(x + (body.getLength() / 2) - front.getRadius(), y + (body.getHeight() / 2)), front.getRadius());
+        position.setX(x);
+        position.setY(y);
+        body.setXY(x, y);
+        front.setXY(x, y, body, true);
+        rear.setXY(x, y, body, false);
     }
 
     virtual void draw() {

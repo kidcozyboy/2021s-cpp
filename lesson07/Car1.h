@@ -53,7 +53,7 @@ public:
         front(Wheel(Point(x - (l / 2) + r, y + (h / 2)), r)),
         rear(Wheel(Point(x + (l / 2) - r, y + (h / 2)), r)) {}
 
-    void draw() {
+    virtual void draw() {
         std::cout << position.getX() << ", " << position.getY() << std::endl;
         body.draw();
         front.fill();

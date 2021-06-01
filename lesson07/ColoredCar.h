@@ -17,7 +17,7 @@ public:
 
     Color getColor() const { return color; }
 
-    void draw() {
+    void draw() override {
         canvas::setColor(color.getRed(), color.getGreen(), color.getBlue());
         canvas::drawRectangle(getPos().getX(), getPos().getY(), getLength(), getHeight());
         canvas::setColor(0, 0, 0);
@@ -33,15 +33,12 @@ public:
             Car(x, y, l, h, r),
             coloredBody(ColoredBody(Point(x - (l / 2), y - (h / 2)), l, h, Color(red, green, blue))) {}
 
-    void setXY(int x, int y) {
-        setPos(Point(x, y));
-        setBody(Body(Point(x - (getBody().getLength() / 2), y - (getBody().getHeight() / 2)), getBody().getLength(), getBody().getHeight()));
-        setFront(Wheel(Point(x - (getBody().getLength() / 2) + getFront().getRadius(), y + (getBody().getHeight() / 2)), getFront().getRadius()));
-        setRear(Wheel(Point(x + (getBody().getLength() / 2) - getFront().getRadius(), y + (getBody().getHeight() / 2)), getFront().getRadius()));
+    void setXY(int x, int y) override {
+        Car::setXY(x, y);
         coloredBody = ColoredBody(Point(x - (getBody().getLength() / 2), y - (getBody().getHeight() / 2)), getBody().getLength(), getBody().getHeight(), Color(coloredBody.getColor().getRed(), coloredBody.getColor().getGreen(), coloredBody.getColor().getBlue()));
     }
 
-    void draw() {
+    void draw() override {
         coloredBody.draw();
         getFront().fill();
         getRear().fill();
