@@ -18,7 +18,9 @@ int main() {
     }
 
     for (int i = 0; i < size; i++) {
-        array[i]->draw();
+        ColoredCircle* cc = dynamic_cast<ColoredCircle*>(array[i]);
+        if (cc != NULL) cc->fill();
+        else array[i]->draw();
     }
     waitForKey();
 }

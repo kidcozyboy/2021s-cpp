@@ -15,10 +15,9 @@ public:
     void setColor(const Color &c) {color = c; }
     void setColor(int r, int g, int b) { color = Color(r, g, b); }
 
-    void draw() const {
+    void draw() const override {
         canvas::setColor(color.getRed(), color.getGreen(), color.getBlue());
         canvas::drawCircle(position.getX(), position.getY(), radius);
-        fill();
     }
 
     void fill() const {
