@@ -3,5 +3,5 @@ project(prog2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(SOURCE_FILES lesson07/Point.h lesson07/Color.h lesson07/Car.h lesson07/ColoredCar.h lesson07/q7_3.cpp lesson07/Car1.h lesson07/Car2.h lesson07/Circle.h lesson07/ColoredCircle.h canvas/canvas.h canvas/canvas.cpp)
+set(SOURCE_FILES canvas/canvas.h canvas/canvas.cpp lesson08/Point.h lesson08/Shape.h lesson08/Triangle.h lesson08/Circle.h lesson08/Rect.h lesson08/q8_4.cpp lesson08/Composite.cpp lesson08/Composite.h)
 add_executable(lesson01 ${SOURCE_FILES})
