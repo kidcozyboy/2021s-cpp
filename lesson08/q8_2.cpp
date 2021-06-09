@@ -15,9 +15,9 @@ int main() {
     Shape* shapes[7] = {
             new Rect(100, 100, 300, 200),
             new Circle(180, 180, 20),
-            new Circle(320, 180, 20),
+            new Circle(180, 180, 20),
             new Triangle(140, 160, 180, 140, 220, 160),
-            new Triangle(280, 160, 320, 140, 360, 160),
+            new Triangle(140, 160, 180, 140, 220, 160),
             new Line(250, 200, 250, 250),
             new Line(150, 280, 350, 280)
     };
