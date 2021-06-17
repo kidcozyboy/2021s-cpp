@@ -15,7 +15,7 @@ ZIPCMD		=	zip
 
 TARGET		=	$(TARGET_EX) $(TARGET_QZ)
 TARGET_EX	=	ex10_1 ex10_2 ex10_3 ex10_4 ex10_5 ex10_6 ex10_7 ex10_8
-TARGET_QZ	=	q10_1_1 q10_1_2 q10_3 q10_4
+TARGET_QZ	=	q10_1_1 q10_1_2 q10_2 q10_3 q10_4
 
 OBJS		=	$(OBJS_EX) $(OBJS_QZ)
 OBJS_EX		=	ex10_1.o ex10_2.o ex10_3.o ex10_4.o ex10_5.o ex10_6.o ex10_7.o ex10_8.o
