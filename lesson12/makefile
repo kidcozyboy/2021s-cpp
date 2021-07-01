@@ -36,7 +36,7 @@ WORKDIR		=	lesson12
 
 ARCHIVE		=	$(WORKDIR).zip
 
-ZIP_SRCS	=	$(WORKDIR)/*.cpp
+ZIP_SRCS	=	$(WORKDIR)/q*.cpp
 
 ZIP_HDRS	=	$(WORKDIR)/*.h
 
